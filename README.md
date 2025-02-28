@@ -11,7 +11,7 @@ A demonstration repo of Greenwood and [**Lume**](https://lume.io/).
 Commands:
 
 - `npm run dev` - start the dev server
-- `npm run start` - generate a production build and serve it
+- `npm start` - generate a production build and serve it
 
 ## Observations
 
