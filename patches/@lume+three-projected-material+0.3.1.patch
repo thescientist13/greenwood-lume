@@ -1,0 +1,15 @@
+diff --git a/node_modules/@lume/three-projected-material/package.json b/node_modules/@lume/three-projected-material/package.json
+index f757cff..ea11809 100644
+--- a/node_modules/@lume/three-projected-material/package.json
++++ b/node_modules/@lume/three-projected-material/package.json
+@@ -4,6 +4,10 @@
+ 	"version": "0.3.1",
+ 	"type": "module",
+ 	"main": "dist/ProjectedMaterial.js",
++  "exports": {
++    ".": "./dist/ProjectedMaterial.js",
++    "./dist/*": "./dist/*"
++  },
+ 	"homepage": "https://github.com/lume/three-projected-material",
+ 	"repository": "git@github.com:lume/three-projected-material.git",
+ 	"contributors": [

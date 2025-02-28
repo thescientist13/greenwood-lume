@@ -1,0 +1,13 @@
+diff --git a/node_modules/seroval-plugins/package.json b/node_modules/seroval-plugins/package.json
+index e863ba5..c9d9a60 100644
+--- a/node_modules/seroval-plugins/package.json
++++ b/node_modules/seroval-plugins/package.json
+@@ -51,7 +51,7 @@
+   },
+   "author": "Alexis Munsayac",
+   "exports": {
+-    "./web": {
++    ".": {
+       "development": {
+         "require": "./dist/cjs/development/web.cjs",
+         "import": "./dist/esm/development/web.mjs"

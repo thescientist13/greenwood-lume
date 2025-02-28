@@ -5,11 +5,17 @@
   "type": "module",
   "scripts": {
     "dev": "greenwood develop",
-    "start": "greenwood develop",
+    "start": "greenwood build && greenwood serve",
     "build": "greenwood build",
-    "serve": "greenwood serve"
+    "serve": "greenwood serve",
+    "postinstall": "patch-package"
+  },
+  "dependencies": {
+    "lume": "^0.3.0-alpha.44",
+    "three": "^0.174.0"
   },
   "devDependencies": {
-    "@greenwood/cli": "~0.31.1"
+    "@greenwood/cli": "~0.31.1",
+    "patch-package": "^8.0.0"
   }
 }
