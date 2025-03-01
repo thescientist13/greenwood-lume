@@ -66,14 +66,18 @@
       }
     </style>
 
+    <!-- TODO this breaks when inlined -->
+    <!-- 
     <script type="module">
-      import {defineElements} from 'lume'
+      import { defineElements } from 'lume';
 
-      console.log('Lume is loaded.')
+      console.log('Lume is loaded.');
 
-      defineElements()
+      defineElements();
     </script>
+    -->
     <script type="module" src="../components/logo/logo.js"></script>
+    <script type="module" src="../lume.js"></script>
   </head>
 
   <body>
