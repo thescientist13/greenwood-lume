@@ -50,7 +50,7 @@ Cannot find package '/Users/owenbuckley/Workspace/github/greenwood-lume/node_mod
 
 Not much Greenwood can do here, and this already seems to fall into the known issues category [already documented on the website](https://greenwoodjs.dev/docs/introduction/web-standards/#compatibility), which is pretty common of these "types"-only kind of packages.
 
-### 🚫 Missing Default Export Conditions
+### 🚫 Missing Default Export Condition
 
 In the case of [**seroval-plugins**](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json) there was _only_ a custom export condition, and no default / main entry condition in the exports map
 
@@ -138,6 +138,7 @@ This is probably something for Greenwood to handle through configuration most li
 ### ❓ Deep-linked `main` imports
 
 Packages like [**lowclass**](https://unpkg.com/browse/lowclass@8.0.2/package.json) / [**@lume/custom-attributes**](https://unpkg.com/browse/@lume/custom-attributes@0.3.0/package.json) / [**@lume/three-projected-material**](https://unpkg.com/browse/@lume/three-projected-material@0.4.0/package.json) do not have any `exports` field, but are [referenced from other packages](https://unpkg.com/browse/lume@0.3.0-alpha.44/src/behaviors/InitialBehaviors.ts) using a pattern of "deep" `main` imports, e.g.
+
 ```js
 import {Constructor} from 'lowclass/dist/Constructor.js'
 ```
@@ -164,6 +165,12 @@ Not sure if there is a way to support this that I'm just not realizing, but cert
     "./dist/*": "./dist/*"
   },
 }
+```
+
+Or support distribution / imports from `main` like this:
+
+```js
+import {Constructor} from 'lowclass'
 ```
 
 > Seeing an unbundled example of a Lume project would be really helpful here. 🔍 👀
