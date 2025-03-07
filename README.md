@@ -108,7 +108,13 @@ This looks to be related to usage of Arrays inside export map conditions, which 
 
 ----
 
-Will have to confirm if this is expected, since I couldn't find any reference to this in the [NodeJS docs](https://nodejs.org/api/packages.html#package-entry-points), but I did find a blog post that seems to reference this as a ["fallback array"](https://hirok.io/posts/package-json-exports#fallback-array-advanced)?
+Will have to confirm if this is expected, since I couldn't find any reference to this in the [NodeJS docs](https://nodejs.org/api/packages.html#package-entry-points) per se, but [the signature for `exports` in the docs](https://nodejs.org/api/packages.html#exports) seems to imply as much?
+
+```md
+Type: <Object> | <string> | <string[]>
+```
+
+ but I did find a blog post that seems to reference this as a ["fallback array"](https://hirok.io/posts/package-json-exports#fallback-array-advanced)?
 
 
 ### ❓ Custom Export Map Conditions
@@ -148,6 +154,8 @@ This causes import map related errors to these specifiers
 ```sh
 Uncaught TypeError: Failed to resolve module specifier "lowclass/dist/Constructor.js". Relative references must start with either "/", "./", or "../".
 ```
+
+> Is this an example of [self-referencing](https://nodejs.org/api/packages.html#self-referencing-a-package-using-its-name)?
 
 ----
 
