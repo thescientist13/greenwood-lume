@@ -191,11 +191,12 @@ Some tasks and questions for Greenwood to investigate
 
 1. [x] import map race condition - https://github.com/ProjectEvergreen/greenwood/issues/1425 
 1. [x] (TBD) Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-  - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
-  - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
+    - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
+    - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
 1. [x] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-  - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
+    - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
 1. [x] (TBD) - Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/discussions/1436
+    - probably doable
 1. [ ] There's seem to be a bug in the pattern Regex in regards to the `/` when trying to load three
     ```js
     // before
@@ -213,4 +214,4 @@ Some recommended upstream changes to packages observed so far.  Additional items
 1. ✅ (Lume) Explicitly call-out **three** as needing to be manually installed by the user
 1. 🚫 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
 1. ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions
-1. ⚠️ (Seroval Plugins) Ideally avoid bespoke export map conditions, but technically probably something that could be supported in Greenwood.
+1. ⚠️ (Seroval Plugins) Ideally avoid bespoke export map conditions, but technically probably something that could be supported in Greenwood via configuration.
