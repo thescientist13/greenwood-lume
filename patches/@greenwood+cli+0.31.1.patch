@@ -1,7 +1,16 @@
 diff --git a/node_modules/@greenwood/cli/src/lib/walker-package-ranger.js b/node_modules/@greenwood/cli/src/lib/walker-package-ranger.js
-index 58c3d18..eb58dcd 100644
+index 58c3d18..891018b 100644
 --- a/node_modules/@greenwood/cli/src/lib/walker-package-ranger.js
 +++ b/node_modules/@greenwood/cli/src/lib/walker-package-ranger.js
+@@ -9,7 +9,7 @@ const diagnostics = new Map();
+ 
+ function updateImportMap(key, value, resolvedRoot) {
+   importMap.set(
+-    key.replace("./", ""),
++    key.replace("./", "").replace(/\/\//g, '/'),
+     `${IMPORT_MAP_RESOLVED_PREFIX}${resolvedRoot.replace("file://", "")}${value.replace("./", "")}`,
+   );
+ }
 @@ -83,7 +83,7 @@ function globToRegex(pattern) {
    pattern = pattern.replace(/[.+^${}()|[\]\\]/g, "\\$&");
  
@@ -55,7 +64,27 @@ index 58c3d18..eb58dcd 100644
          let matched = false;
  
          for (const condition of SUPPORTED_EXPORT_CONDITIONS) {
-@@ -271,7 +306,7 @@ async function walkPackageJson(packageJson = {}, walkedPackages = new Set()) {
+@@ -239,7 +274,18 @@ async function walkPackageForExports(dependency, packageJson, resolvedRoot) {
+       }
+     }
+   } else if (module || main) {
+-    updateImportMap(dependency, `${module ?? main}`, resolvedRoot);
++    if (main) {
++      const root = main.split('/').slice(0, -1).join('/');
++      // console.log({ main, root });
++      // const relativeRoot = root.startsWith('.')
++      //   ? root
++      //   : `./${root}`;
++      // console.log({ relativeRoot, resolvedRoot });
++      updateImportMap(dependency, main, resolvedRoot);
++      await walkExportPatterns(dependency, '', `${root}/*`, resolvedRoot);
++    } else {
++      updateImportMap(dependency, module, resolvedRoot);
++    }
+   } else if (fs.existsSync(new URL("./index.js", resolvedRoot))) {
+     // if an index.js file exists but with no main entry point, then it should count as a main entry point
+     // https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main
+@@ -271,7 +317,7 @@ async function walkPackageJson(packageJson = {}, walkedPackages = new Set()) {
            ).default;
            const { name } = resolvedPackageJson;
  
