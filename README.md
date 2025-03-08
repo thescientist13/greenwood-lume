@@ -183,8 +183,6 @@ Or support distribution / imports from `main` like this:
 import {Constructor} from 'lowclass'
 ```
 
-> Seeing an unbundled example of a Lume project would be really helpful here. 🔍 👀
-
 ## Upstreams
 
 ### Greenwood
@@ -197,6 +195,7 @@ Some tasks and questions for Greenwood to investigate
   - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
 1. [x] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
   - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
+1. [x] (TBD) - Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/discussions/1436
 1. [ ] There's seem to be a bug in the pattern Regex in regards to the `/` when trying to load three
     ```js
     // before
