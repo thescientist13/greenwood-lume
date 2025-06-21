@@ -77,7 +77,7 @@ Custom export conditions aside, the exports map spec expects at minimum a `.` ex
 
 ### ❓ Array Based Export Conditions
 
-> _**UPDATE: This one lands in a gray area, since after reaching out to some NodeJS folks, support for this seems discouraged, which explained why it was not documented (anymore).  So this seems like it might be an option for Greenwood to support._
+> _**UPDATE**: This one lands in a gray area, since after reaching out to some NodeJS folks, support for this seems discouraged, which explained why it was not documented (anymore).  So this seems like it might be an option for Greenwood to support._
 
 Noticed this message from Greenwood when running the dev server for all these packages; [**gen-mapping**](https://unpkg.com/browse/@jridgewell/gen-mapping@0.3.8/package.json), [**set-array**](https://unpkg.com/browse/@jridgewell/set-array@1.2.1/package.json), [**sourcemap-codec**](https://unpkg.com/browse/@jridgewell/sourcemap-codec@1.5.0/package.json), [**trace-mapping**](https://unpkg.com/browse/@jridgewell/trace-mapping@0.3.25/package.json), [**resolve-uri**](https://unpkg.com/browse/@jridgewell/resolve-uri@3.1.2/package.json)
 
