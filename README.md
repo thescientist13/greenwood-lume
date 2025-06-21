@@ -196,7 +196,7 @@ Some tasks and questions for Greenwood to investigate
 1. [ ] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
     - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
 1. [ ] (TBD) - Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-    - probably doable
+    - probably doable, and could / should build off using `fs.glob` approach for our Regex fix
 1. [ ] There's seem to be a bug in the pattern Regex in regards to the `/` when trying to load three.js - https://github.com/ProjectEvergreen/greenwood/issues/1483
     ```js
     // before
