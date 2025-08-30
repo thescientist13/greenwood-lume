@@ -8,6 +8,7 @@
     "start": "greenwood build && greenwood serve",
     "build": "greenwood build",
     "serve": "greenwood serve",
+    "check": "tsc",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@greenwood/cli": "~0.31.1",
-    "patch-package": "^8.0.0"
+    "patch-package": "^8.0.0",
+    "typescript": "^5.9.2"
   }
 }

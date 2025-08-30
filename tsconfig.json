@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
+    "verbatimModuleSyntax": true,
+    "noImplicitAny": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "./public/",
+    "./greenwood/",
+    "node_modules"
+  ]
+}
