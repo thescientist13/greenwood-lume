@@ -15,7 +15,7 @@ Commands:
 
 ## Observations
 
-### ✅ Three Dependency Missing 
+### ✅ Three.js Dependency Missing 
 
 Got an import maps error that a **three** import specifier could not be found
 ```
@@ -39,7 +39,7 @@ Maybe I just missed it, but recommendation would be to call out three as a `peer
 
 ### ⚠️ Empty Main
 
-When tunning the dev server, there will be a message in regards to **csstype**, since it has an [empty `main` field](https://unpkg.com/browse/csstype@3.1.3/package.json) in its _package.json_.
+When running the dev server, there will be a message in regards to **csstype**, since it has an [empty `main` field](https://unpkg.com/browse/csstype@3.1.3/package.json) in its _package.json_.
 
 ```sh
 - ERROR (ERR_MODULE_NOT_FOUND): unable to resolve specifier => `csstype`
@@ -189,14 +189,7 @@ import {Constructor} from 'lowclass'
 
 Some tasks and questions for Greenwood to investigate
 
-1. [x] import map race condition - https://github.com/ProjectEvergreen/greenwood/issues/1425 
-1. [ ] (TBD) Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-    - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
-    - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
-1. [ ] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-    - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
-1. [ ] (TBD) - Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-    - probably doable, and could / should build off using `fs.glob` approach for our Regex fix
+1. [x] import map race condition - https://github.com/ProjectEvergreen/greenwood/issues/1425
 1. [ ] There's seem to be a bug in the pattern Regex in regards to the `/` when trying to load three.js - https://github.com/ProjectEvergreen/greenwood/issues/1483
     ```js
     // before
@@ -205,13 +198,20 @@ Some tasks and questions for Greenwood to investigate
     // after - no /
     pattern = pattern.replace(/\*/g, "[^]*");
     ```
+1. [ ] (TBD) - Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/discussions/1436
+    - probably doable, and could / should build off using `fs.glob` approach for our Regex fix
+1. [ ] (TBD) Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/discussions/1436
+    - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
+    - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
+1. [ ] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
+    - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
 1. [ ] inline Lume `<script>` tags breaks during production build
 
 ### Lume (and friends)
 
 Some recommended upstream changes to packages observed so far.  Additional items may be added once some of the questions above have been resolved.
 
-1. ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user (should open an issue upstream)
-1. 🚫 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
-1. ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions
-1. ⚠️ (Seroval Plugins) Ideally avoid bespoke export map conditions, but technically probably something that could be supported in Greenwood via configuration.
+1. [ ] 🚫 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
+1. [ ] ⚠️ (Seroval Plugins) Ideally avoid bespoke export map conditions, but technically probably something that could be supported in Greenwood via configuration.
+1. [ ] ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user (should open an issue upstream)
+1. [ ] ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions
