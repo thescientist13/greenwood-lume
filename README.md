@@ -139,7 +139,25 @@ In the case of [**seroval-plugins**](https://unpkg.com/browse/seroval-plugins@1.
 }
 ```
 
-This is probably something for Greenwood to handle through configuration most likely, since [custom user conditions are valid through the exports map spec](https://nodejs.org/api/packages.html#resolving-user-conditions).
+Fixed by changing `./web` -> `.` (or just adding a copy / paste entry for it)
+
+```
+diff --git a/node_modules/seroval-plugins/package.json b/node_modules/seroval-plugins/package.json
+index e863ba5..c9d9a60 100644
+--- a/node_modules/seroval-plugins/package.json
++++ b/node_modules/seroval-plugins/package.json
+@@ -51,7 +51,7 @@
+   },
+   "author": "Alexis Munsayac",
+   "exports": {
+-    "./web": {
++    ".": {
+       "development": {
+         "require": "./dist/cjs/development/web.cjs",
+         "import": "./dist/esm/development/web.mjs"
+```
+
+> This is probably something for Greenwood to handle through configuration most likely, since [custom user conditions are valid through the exports map spec](https://nodejs.org/api/packages.html#resolving-user-conditions).
 
 > Note: As called out earlier, this package would still fail even with custom user conditions support for the reason it does not at least have a default export condition (`.`).
 
@@ -211,7 +229,17 @@ Some tasks and questions for Greenwood to investigate
 
 Some recommended upstream changes to packages observed so far.  Additional items may be added once some of the questions above have been resolved.
 
+Should open upstream issues for each.
+
+#### Seroval Plugins
+
 1. [ ] 🚫 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
 1. [ ] ⚠️ (Seroval Plugins) Ideally avoid bespoke export map conditions, but technically probably something that could be supported in Greenwood via configuration.
+
+#### Lume
+
 1. [ ] ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user (should open an issue upstream)
+
+#### @jridgewell
+
 1. [ ] ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions
