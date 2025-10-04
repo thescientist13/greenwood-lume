@@ -218,7 +218,7 @@ Some tasks and questions for Greenwood to investigate
     ```
 1. [ ] (TBD) - Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/discussions/1436
     - probably doable, and could / should build off using `fs.glob` approach for our Regex fix
-1. [ ] (TBD) Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/discussions/1436
+1. [ ] (TBD) Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/issues/1591
     - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
     - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
 1. [ ] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
