@@ -15,7 +15,9 @@ Commands:
 
 ## Observations
 
-### ✅ Three.js Dependency Missing 
+### ✅ Three.js Dependency Missing
+
+> **RESOLVED** - https://github.com/ProjectEvergreen/greenwood/issues/1483.
 
 Got an import maps error that a **three** import specifier could not be found
 ```
@@ -50,9 +52,9 @@ Cannot find package '/Users/owenbuckley/Workspace/github/greenwood-lume/node_mod
 
 Not much Greenwood can do here, and this already seems to fall into the known issues category [already documented on the website](https://greenwoodjs.dev/docs/introduction/web-standards/#compatibility), which is pretty common of these "types"-only kind of packages.
 
-### 🚫 Missing Default Export Condition
+### 🚨 Missing Default Export Condition
 
-In the case of [**seroval-plugins**](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json) there was _only_ a custom export condition, and no default / main entry condition in the exports map
+In the case of [**seroval-plugins**](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json) there was no default / main entry condition in the exports map
 
 ```json
 {
@@ -71,9 +73,18 @@ Which meant `import.meta.url` failed to resolve the _package.json_ lookup:
 No "exports" main defined in /Users/owenbuckley/Workspace/github/greenwood-lume/node_modules/seroval-plugins/package.json imported from /Users/owenbuckley/Workspace/github/greenwood-lume/node_modules/@greenwood/cli/src/lib/walker-package-ranger.js
 ```
 
-----
+The exports map spec expects at minimum a `.` export condition.  Like [other packages in that ecosystem](https://unpkg.com/browse/seroval@1.2.1/package.json), the easiest solution would be to just to add a `.` entry
 
-Custom export conditions aside, the exports map spec expects at minimum a `.` export condition.  Like [other packages in that ecosystem](https://unpkg.com/browse/seroval@1.2.1/package.json), the easiest solution would be to just rename `./web` -> `.`, or have both.
+```json
+{
+  "exports": {
+    ".": "same/path/as/web.js",
+    "./web": {
+      "...": "..."
+    }
+  },
+}
+```
 
 ### ❓ Array Based Export Conditions
 
@@ -119,6 +130,12 @@ Type: <Object> | <string> | <string[]>
  but I did find a blog post that seems to reference this as a ["fallback array"](https://hirok.io/posts/package-json-exports#fallback-array-advanced)?
 
 
+<details>
+
+> No longer applicable to this particular use case as top level entries are already fine in Greenwood, it would just be a problem there was a custom condition that [_does not match_ one of `import`, `module-sync`, `default`](https://greenwoodjs.dev/docs/introduction/web-standards/#import-maps).  Custom conditions would be something more like [this](https://app.unpkg.com/solid-js@1.9.10/files/package.json#L129).
+>
+> Made an issue to eventually support this in Greenwood though - https://github.com/ProjectEvergreen/greenwood/issues/1613
+
 ### ❓ Custom Export Map Conditions
 
 In the case of [**seroval-plugins**](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json) there was (only) a custom export condition
@@ -160,6 +177,8 @@ index e863ba5..c9d9a60 100644
 > This is probably something for Greenwood to handle through configuration most likely, since [custom user conditions are valid through the exports map spec](https://nodejs.org/api/packages.html#resolving-user-conditions).
 
 > Note: As called out earlier, this package would still fail even with custom user conditions support for the reason it does not at least have a default export condition (`.`).
+
+</details>
 
 ### ❓ Deep-linked `main` imports
 
@@ -221,9 +240,7 @@ Some tasks and questions for Greenwood to investigate
 1. [ ] Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/issues/1591
     - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
     - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
-1. [ ] (TBD) Custom export map conditions - https://github.com/ProjectEvergreen/greenwood/discussions/1436
-    - Should probably consider supporting custom export map conditions? (e.g. [`./web`](https://unpkg.com/browse/seroval-plugins@1.2.1/package.json)) through configuration, since this technically is allowed via the spec
-1. [ ] inline Lume `<script>` tags breaks during production build
+1. [ ] inline `<script>` tags breaks during production build
 
 ### Lume (and friends)
 
@@ -233,8 +250,7 @@ Should open upstream issues for each.
 
 #### Seroval Plugins
 
-1. [ ] 🚫 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
-1. [ ] ⚠️ (Seroval Plugins) Ideally avoid bespoke export map conditions, but technically probably something that could be supported in Greenwood via configuration.
+1. [ ] 🚨 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
 
 #### Lume
 
