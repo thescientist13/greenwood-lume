@@ -17,7 +17,7 @@ Commands:
 
 ### ✅ Three.js Dependency Missing
 
-> **RESOLVED** - https://github.com/ProjectEvergreen/greenwood/issues/1483.
+> **RESOLVED** - https://github.com/ProjectEvergreen/greenwood/issues/1483
 
 Got an import maps error that a **three** import specifier could not be found
 ```
@@ -86,7 +86,9 @@ The exports map spec expects at minimum a `.` export condition.  Like [other pac
 }
 ```
 
-### ❓ Array Based Export Conditions
+### ✅ Array Based Export Conditions
+
+> **RESOLVED** - https://github.com/ProjectEvergreen/greenwood/issues/1591
 
 > _**UPDATE**: This one lands in a gray area, since after reaching out to some NodeJS folks, support for this seems discouraged, which explained why it was not documented (anymore).  So this seems like it might be an option for Greenwood to support._
 
@@ -180,7 +182,9 @@ index e863ba5..c9d9a60 100644
 
 </details>
 
-### ❓ Deep-linked `main` imports
+### ✅ Deep-linked `main` imports
+
+> **RESOLVED** - https://github.com/ProjectEvergreen/greenwood/issues/1602
 
 Packages like [**lowclass**](https://unpkg.com/browse/lowclass@8.0.2/package.json) / [**@lume/custom-attributes**](https://unpkg.com/browse/@lume/custom-attributes@0.3.0/package.json) / [**@lume/three-projected-material**](https://unpkg.com/browse/@lume/three-projected-material@0.4.0/package.json) do not have any `exports` field, but are [referenced from other packages](https://unpkg.com/browse/lume@0.3.0-alpha.44/src/behaviors/InitialBehaviors.ts) using a pattern of "deep" `main` imports, e.g.
 
@@ -227,7 +231,7 @@ import {Constructor} from 'lowclass'
 Some tasks and questions for Greenwood to investigate
 
 1. [x] import map race condition - https://github.com/ProjectEvergreen/greenwood/issues/1425
-1. [ ] There's seem to be a bug in the pattern Regex in regards to the `/` when trying to load three.js - https://github.com/ProjectEvergreen/greenwood/issues/1483
+1. [x] There's seem to be a bug in the pattern Regex in regards to the `/` when trying to load three.js - https://github.com/ProjectEvergreen/greenwood/issues/1483
     ```js
     // before
     pattern = pattern.replace(/\*/g, "[^/]*");
@@ -235,12 +239,12 @@ Some tasks and questions for Greenwood to investigate
     // after - no /
     pattern = pattern.replace(/\*/g, "[^]*");
     ```
-1. [ ] Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/issues/1602
+1. [x] Deep `main` exports - https://github.com/ProjectEvergreen/greenwood/issues/1602
     - probably doable, and could / should build off using `fs.glob` approach for our Regex fix
-1. [ ] Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/issues/1591
+1. [x] Are array based export conditions supported? - https://github.com/ProjectEvergreen/greenwood/issues/1591
     - kind of... but seemingly they are not documented for a reason based on chats with NodeJS friends
     - that said, they are spec'd and know to some degree, so perhaps some basic support could be added to Greenwood
-1. [ ] inline `<script>` tags breaks during production build
+1. [ ] inline `<script>` tags breaks during production build - https://github.com/thescientist13/greenwood-lume/issues/3
 
 ### Lume (and friends)
 
@@ -259,3 +263,7 @@ Should open upstream issues for each.
 #### @jridgewell
 
 1. [ ] ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions
+
+#### csstype
+
+1. [ ] ⚠️ empty main entrypoint

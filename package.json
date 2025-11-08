@@ -8,16 +8,14 @@
     "start": "greenwood build && greenwood serve",
     "build": "greenwood build",
     "serve": "greenwood serve",
-    "check": "tsc",
-    "postinstall": "patch-package"
+    "check": "tsc"
   },
   "dependencies": {
     "lume": "^0.3.0-alpha.44",
     "three": "^0.174.0"
   },
   "devDependencies": {
-    "@greenwood/cli": "~0.33.0-alpha.7",
-    "patch-package": "^8.0.0",
+    "@greenwood/cli": "~0.34.0-alpha.1",
     "typescript": "^5.9.2"
   }
 }
