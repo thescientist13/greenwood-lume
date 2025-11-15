@@ -256,16 +256,16 @@ Should open upstream issues for each.
 
 #### Seroval Plugins
 
-1. [ ] 🚨 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`) - https://github.com/lxsmnsyc/seroval/issues/67
+1. [ ] ⚠️ (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`) - https://github.com/lxsmnsyc/seroval/issues/67 (though not actually breaking anything)
 
 #### Lume
 
-1. [ ] ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user (should open an issue upstream) - https://github.com/lume/lume.github.io/issues/3
+1. [ ] ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user - https://github.com/lume/lume.github.io/issues/3
 
 #### @jridgewell
 
-1. [ ] ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions
+1. [ ] ⚠️ (@jridgewell packages) Move away from "discontinued" array / fallback export conditions (support added to Greenwood for now)
 
 #### csstype
 
-1. [ ] ⚠️ empty main entrypoint
+1. [ ] ⚠️ empty main entrypoint (though not actually breaking anything)
