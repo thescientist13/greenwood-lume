@@ -24,6 +24,8 @@ Got an import maps error that a **three** import specifier could not be found
 Uncaught TypeError: Failed to resolve module specifier "three/src/core/Object3D.js". Relative references must start with either "/", "./", or "../".
 ```
 
+----
+
 Checking with npm, I could see that **three** _was_ technically in the dependency graph
 ```sh
 greenwood-lume@1.0.0 /Users/owenbuckley/Workspace/github/greenwood-lume
@@ -33,7 +35,7 @@ greenwood-lume@1.0.0 /Users/owenbuckley/Workspace/github/greenwood-lume
   └── three@0.174.0
 ```
 
-But it is only [a `peerDependency` of **lume**](https://unpkg.com/browse/lume@0.3.0-alpha.44/package.json), but I didn't see it explicitly [called out in the docs](https://docs.lume.io/guide/install) that this package needed to be vendored as such?
+But it is only [a `peerDependency` of **lume**](https://unpkg.com/browse/lume@0.3.0-alpha.44/package.json), but I didn't see it explicitly [called out in the docs](https://docs.lume.io/guide/install) that this package needed to be vendored as such?  Simple solution was just to `npm i lume` as a first party dependency.
 
 ----
 
@@ -254,11 +256,11 @@ Should open upstream issues for each.
 
 #### Seroval Plugins
 
-1. [ ] 🚨 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`)
+1. [ ] 🚨 (Seroval Plugins) Need to _at least_ have a default exports map condition (e.g. `.`) - https://github.com/lxsmnsyc/seroval/issues/67
 
 #### Lume
 
-1. [ ] ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user (should open an issue upstream)
+1. [ ] ⚠️ (Lume) Explicitly call-out **three** as needing to be manually installed by the user (should open an issue upstream) - https://github.com/lume/lume.github.io/issues/3
 
 #### @jridgewell
 
