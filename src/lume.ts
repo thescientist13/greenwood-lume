@@ -1,6 +1,5 @@
 import 'lume';
 
-// TODO: get full demo working
 // TODO: get full type-checking setup
 
 // https://docs.lume.io/examples/hello-world/
