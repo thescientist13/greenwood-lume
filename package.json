@@ -15,7 +15,7 @@
     "three": "^0.174.0"
   },
   "devDependencies": {
-    "@greenwood/cli": "~0.34.0-alpha.1",
+    "@greenwood/cli": "~0.34.0-alpha.3",
     "typescript": "^5.9.2"
   }
 }
